@@ -41,7 +41,7 @@ An analysis of life expectancy trends, deprivation gradients, and the healthy li
 
 ## Background
 
-- **MPH (Merit)** — Liverpool School of Tropical Medicine
+- **MPH (Merit)** — University of Liverpool 
 - **Clinical background** — trained physician with experience in mental health rehabilitation services, Liverpool
 - **Dissertation** — logistic regression analysis of a national dataset in R; co-authored peer-reviewed research; experience with IDSR surveillance frameworks
 
