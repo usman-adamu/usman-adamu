@@ -2,7 +2,7 @@
 
 **Public Health Data Analyst | MPH (Merit) | Liverpool**
 
-I am a public health professional with a clinical background and a Master of Public Health (Merit), currently building a specialist portfolio in public health data analysis and epidemiology. My work focuses on health inequalities, mental health surveillance, and the social determinants of health — using real NHS and OHID data to produce reproducible, policy-relevant analyses.
+I am a public health professional with a clinical background and a Master of Public Health (Merit), currently building a specialist portfolio in public health data analysis and epidemiology. My work focuses on health inequalities, mental health surveillance, and the social determinants of health, using real NHS and OHID data to produce reproducible, policy-relevant analyses.
 
 ---
 
