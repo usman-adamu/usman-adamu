@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Usman Adamu — Public Health Data Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f1923;
+      --paper: #f5f0e8;
+      --accent: #1d4e3f;
+      --accent-light: #2a6b55;
+      --rule: #c8bfaa;
+      --muted: #6b6256;
+      --tag-bg: #e4ddd0;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NOISE TEXTURE OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HEADER */
+    header {
+      padding: 5rem 0 3rem;
+      border-bottom: 1.5px solid var(--rule);
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+      max-width: 560px;
+    }
+
+    .credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.6rem;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.75rem;
+      background: var(--tag-bg);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      color: var(--muted);
+    }
+
+    /* BIO SECTION */
+    .bio {
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1.5px solid var(--rule);
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rule);
+      margin-bottom: 1rem;
+    }
+
+    .bio p {
+      font-size: 1rem;
+      color: var(--ink);
+      max-width: 640px;
+      opacity: 0.85;
+    }
+
+    .bio p + p { margin-top: 0.9rem; }
+
+    /* PROJECTS */
+    .projects {
+      padding: 3rem 0;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .project-card {
+      display: block;
+      text-decoration: none;
+      border: 1.5px solid var(--rule);
+      padding: 2rem 2rem 1.8rem;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      background: rgba(255,255,255,0.35);
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(15,25,35,0.08);
+    }
+
+    .project-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .project-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--rule);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .meta-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.6rem;
+      background: var(--tag-bg);
+      color: var(--muted);
+      border-radius: 2px;
+    }
+
+    .project-arrow {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 1.2rem;
+      color: var(--rule);
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover .project-arrow {
+      color: var(--accent);
+      transform: translate(3px, -3px);
+    }
+
+    /* SKILLS */
+    .skills {
+      padding: 2.5rem 0;
+      border-top: 1.5px solid var(--rule);
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-group h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-group ul {
+      list-style: none;
+    }
+
+    .skill-group ul li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding: 0.15rem 0;
+      border-bottom: 1px solid var(--tag-bg);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2.5rem 0 4rem;
+      border-top: 1.5px solid var(--rule);
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-note {
+      font-size: 0.78rem;
+      color: var(--rule);
+      margin-top: 1.5rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 3rem 0 2rem; }
+      .project-card { padding: 1.5rem; }
+      .project-arrow { display: none; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <p class="eyebrow">Public Health Data Portfolio</p>
+      <h1>Usman<br><em>Adamu</em></h1>
+      <p class="subtitle">GMC-registered physician and public health analyst specialising in epidemiology, health inequalities, and data-driven population health.</p>
+      <div class="credentials">
+        <span class="tag">MPH (Merit) — University of Liverpool</span>
+        <span class="tag">GMC Registered</span>
+        <span class="tag">R · R Markdown · SQL</span>
+        <span class="tag">OHID Fingertips · ggplot2 · tmap</span>
+        <span class="tag">Published Co-Author</span>
+      </div>
+    </header>
+
+    <section class="bio">
+      <p class="section-label">About</p>
+      <p>I am a doctor trained in clinical medicine with seven years of post-qualification experience across general medicine, surgery, paediatrics, and mental health. I hold a Master of Public Health with Merit and have co-authored peer-reviewed research published in international journals.</p>
+      <p>I am transitioning into public health data analysis and epidemiology, with a focus on health inequalities, surveillance, and population-level analytics. This portfolio demonstrates applied epidemiological methods using real NHS data from the OHID Fingertips platform.</p>
+    </section>
+
+    <section class="projects">
+      <p class="section-label">Projects</p>
+      <div class="projects-grid">
+
+        <a class="project-card" href="https://usman-adamu.github.io/health-inequalities-england/">
+          <span class="project-arrow">↗</span>
+          <p class="project-number">01</p>
+          <h2 class="project-title">Health Inequalities in England: Deprivation &amp; Life Expectancy</h2>
+          <p class="project-desc">An epidemiological analysis of life expectancy trends across English local authorities from 2001 to 2020. Examines deprivation gradients by sex, healthy versus total life expectancy, and inequality persistence over two decades using linear regression and deprivation quintile modelling.</p>
+          <div class="project-meta">
+            <span class="meta-tag">Linear Regression</span>
+            <span class="meta-tag">Deprivation Quintiles</span>
+            <span class="meta-tag">Sex-stratified Analysis</span>
+            <span class="meta-tag">OHID Fingertips</span>
+            <span class="meta-tag">ggplot2</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://usman-adamu.github.io/mental-health-trends-england/">
+          <span class="project-arrow">↗</span>
+          <p class="project-number">02</p>
+          <h2 class="project-title">Mental Health Trends in England: Depression, Deprivation &amp; Hospital Admissions</h2>
+          <p class="project-desc">A longitudinal analysis of depression prevalence trends from 2010 to 2024 across English local authorities. Investigates geographic variation, deprivation associations, and gender-stratified hospital admissions among under-18s using time series decomposition and regression modelling.</p>
+          <div class="project-meta">
+            <span class="meta-tag">Time Series</span>
+            <span class="meta-tag">Logistic Regression</span>
+            <span class="meta-tag">Geographic Variation</span>
+            <span class="meta-tag">OHID Fingertips</span>
+            <span class="meta-tag">tmap · sf</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="skills">
+      <p class="section-label">Technical Skills</p>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <ul>
+            <li>R</li>
+            <li>R Markdown</li>
+            <li>SQL</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Visualisation</h4>
+          <ul>
+            <li>ggplot2</li>
+            <li>tmap</li>
+            <li>sf</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Statistical Methods</h4>
+          <ul>
+            <li>Linear &amp; Logistic Regression</li>
+            <li>Time Series Decomposition</li>
+            <li>Kaplan–Meier Survival Analysis</li>
+            <li>Deprivation Quintile Analysis</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Data Sources</h4>
+          <ul>
+            <li>OHID Fingertips (fingertipsR)</li>
+            <li>NHS Digital</li>
+            <li>ONS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <p class="footer-name">Usman Adamu</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/usman-adamu" target="_blank">GitHub ↗</a>
+          <a href="mailto:usman_adamu@outlook.com">usman_adamu@outlook.com</a>
+        </div>
+      </div>
+      <p class="footer-note">All analyses use publicly available NHS data from the OHID Fingertips platform. Produced in R Markdown with Vancouver-style citations.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
