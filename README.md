@@ -33,7 +33,7 @@ An epidemiological analysis of depression prevalence trends, geographic variatio
 ### 📈 [Health Inequalities in England](https://github.com/usman-adamu/health-inequalities-england)
 An analysis of life expectancy trends, deprivation gradients, and the healthy life expectancy paradox across English local authorities (2001–2022), using OHID Fingertips data. Includes sex-stratified regression comparisons and a deprivation quintile analysis of the gap between total and healthy life expectancy.
 
-**Key findings:** A 6.7-year life expectancy gap exists between the most and least deprived local authorities. The deprivation-life expectancy relationship explained 66.7% of geographic variance (R² = 0.667, p < 0.001). The healthy life expectancy paradox — whereby the most deprived areas spend a greater proportion of their shorter lives in poor health — was confirmed and quantified.
+**Key findings:** A 6.7-year life expectancy gap exists between the most and least deprived local authorities. The deprivation-life expectancy relationship explained 66.7% of geographic variance (R² = 0.667, p < 0.001). The healthy life expectancy paradox, whereby the most deprived areas spend a greater proportion of their shorter lives in poor health, was confirmed and quantified.
 
 `R` `fingertipsR` `ggplot2` `tmap` `regression` `health inequalities` `life expectancy`
 
@@ -49,6 +49,6 @@ An analysis of life expectancy trends, deprivation gradients, and the healthy li
 
 ## Current Focus
 
-Seeking roles in **public health data analytics** and **epidemiology** in the North West of England and nationally. Open to public sector, NHS, local authority, and academic research environments.
+Seeking roles in **public health data analytics** and **epidemiology** in the North West of England and nationally. Open to the public sector, NHS, local authority, and academic research environments.
 
 📧 Reach me via GitHub or LinkedIn.
